@@ -18,13 +18,9 @@ h1{
 .intro{
     text-align: center;
 }
-.question{
+.div{
     text-align: center;
-
 }
-button{
-    padding: 16px;
-    
+#button{
     text-align: center;
-    align-content: center;
 }

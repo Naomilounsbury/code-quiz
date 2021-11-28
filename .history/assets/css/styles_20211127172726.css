@@ -20,11 +20,8 @@ h1{
 }
 .question{
     text-align: center;
-
+    float:right;
 }
 button{
-    padding: 16px;
-    
     text-align: center;
-    align-content: center;
 }

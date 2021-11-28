@@ -39,7 +39,6 @@ var onStartQuiz = function () {
     //create a next question button that will go on to the next question and save your answer
     console.log("hello")
 }
-var nextQuestion
 //making an array of questions
 var questions = [
     {

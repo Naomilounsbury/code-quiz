@@ -14,13 +14,13 @@
      View High Scores
  </div>  
  <!-- oh god I have to actually figure out how to do a timer -->
- <div class="time">
+ <div class="timeS">
      Time 
  </div> 
  <h1 class="title">Coding Quiz</h1>
 </header>
 <!-- I then created a div element to introduce, maybe I'll add more to it later -->
- <div class="intro">
+ <div>
 
      Please take this little coding quiz and test your knowledge.
      <!-- I connected the button to the javascrpt woohoo -->
@@ -30,10 +30,22 @@
  </div>
  <!-- here is the quiz -->
  <form id="questions-form">
- <div class="question" >
-   
- </div>
+ <div id="question" class="question" >
+    <!-- do i even need classes here? I know I will have to get buttons by id to be able to talk to them -->
+     <button class="a" id="a" >
+     </button>
+     <button class="b" id="b">
+     </button>
+     <button class="c" id="c">
+     </button>
+     <button class="d" id="d">
+     </button>
 
+    
+ </div>
+ <button onclick="nextQuestion()">
+        Next Question 
+</button>
 </form>
 <script src="./assets/js/script.js"></script>
 </body>

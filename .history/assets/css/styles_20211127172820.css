@@ -23,8 +23,6 @@ h1{
 
 }
 button{
-    padding: 16px;
-    
     text-align: center;
-    align-content: center;
+    float:center;
 }
