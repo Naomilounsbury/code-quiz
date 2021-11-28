@@ -118,7 +118,6 @@ var turnBlue = function(event){
 //whenever we call verifyAnswer, we are feeding it the current question
 var verifyAnswer =function(currentQuestion, btnId){
     //btn- is an empty string and we are replaing it as an empty string so the remaining part of the string a, b, c, or d is left as the received answer
-    //fuck replacing parts of strings
     var receivedAnswer = btnId.replace("btn-","")
     console.log(btnId, receivedAnswer)
     

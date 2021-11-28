@@ -71,24 +71,8 @@ var onStartQuiz = function () {
     console.log("hello")
 }
 var nextQuestion = function() {
-
-    //need to save the blue answer if background color is blue whe get the id of the btn
-    //and compare it to the answer
-    //saving all the btns in a variable
-    var btnList = document.querySelectorAll(".btn");
-    //I originally put var here but it can't be a variable because I need to reset it to something else inside the for loop
-    let checkIt = ""
-    for(let i = 0; i < btnList.length; i++){
-        //if the background color is blue then I am setting the variable checkit to the btn id
-        //this will hopefully save the btn id
-        if (btnList[i].style.backgroundColor === "blue"){
-            checkIt = btnList[i].id
-        }
-        }
-
     //the first paramenter of verifyAnswer is the current question
-    verifyAnswer(questions[questionIndex], checkIt)
-    
+    verifyAnswer(questions[questionIndex])
     
     //questionIndex++=questionIndex plus 1, which would change our index to the next question in our list
     questionIndex++
@@ -96,6 +80,8 @@ var nextQuestion = function() {
     //change the innertext for the question
     var currentQuestion = questions[questionIndex];
     questionDivEl.innerText = currentQuestion.question
+
+
     //update answer options 
     
 
@@ -104,23 +90,13 @@ var nextQuestion = function() {
 var turnBlue = function(event){
     console.log(event)
     //when btn onclick, turn btn blue
-    //so I made a variable to select all the buttons to change color when they are clicked
-    //because I want them to turn blue when clicked but I also don't want them to all turn blue
-    //I want whichever is the most recent clicked button to turn blue
-    //I didn't know how to do this so w3schools https://www.w3schools.com/js/js_htmldom_nodelist.asp
-    //was very helpful
-     var btnList = document.querySelectorAll(".btn")
-    for(let i = 0; i < btnList.length; i++){
-        btnList[i].style.backgroundColor = "white"}
+    document.querySelector("btn-a", "btn-b", "btn-c").style.backgroundColor = "pink"
     event.target.style.backgroundColor = "blue";
     
 }
 //whenever we call verifyAnswer, we are feeding it the current question
-var verifyAnswer =function(currentQuestion, btnId){
-    //btn- is an empty string and we are replaing it as an empty string so the remaining part of the string a, b, c, or d is left as the received answer
-    //fuck replacing parts of strings
-    var receivedAnswer = btnId.replace("btn-","")
-    console.log(btnId, receivedAnswer)
+var verifyAnswer =function(currentQuestion){
+    
     
 
     //check recieved answer against the current question aswer

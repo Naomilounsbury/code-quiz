@@ -71,6 +71,15 @@ var onStartQuiz = function () {
     console.log("hello")
 }
 var nextQuestion = function() {
+    //the first paramenter of verifyAnswer is the current question
+    verifyAnswer(questions[questionIndex])
+    
+    //questionIndex++=questionIndex plus 1, which would change our index to the next question in our list
+    questionIndex++
+    console.log(questionIndex)
+    //change the innertext for the question
+    var currentQuestion = questions[questionIndex];
+    questionDivEl.innerText = currentQuestion.question
 
     //need to save the blue answer if background color is blue whe get the id of the btn
     //and compare it to the answer
@@ -86,16 +95,7 @@ var nextQuestion = function() {
         }
         }
 
-    //the first paramenter of verifyAnswer is the current question
-    verifyAnswer(questions[questionIndex], checkIt)
-    
-    
-    //questionIndex++=questionIndex plus 1, which would change our index to the next question in our list
-    questionIndex++
-    console.log(questionIndex)
-    //change the innertext for the question
-    var currentQuestion = questions[questionIndex];
-    questionDivEl.innerText = currentQuestion.question
+
     //update answer options 
     
 
@@ -116,11 +116,8 @@ var turnBlue = function(event){
     
 }
 //whenever we call verifyAnswer, we are feeding it the current question
-var verifyAnswer =function(currentQuestion, btnId){
-    //btn- is an empty string and we are replaing it as an empty string so the remaining part of the string a, b, c, or d is left as the received answer
-    //fuck replacing parts of strings
-    var receivedAnswer = btnId.replace("btn-","")
-    console.log(btnId, receivedAnswer)
+var verifyAnswer =function(currentQuestion){
+    
     
 
     //check recieved answer against the current question aswer
