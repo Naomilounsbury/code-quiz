@@ -9,16 +9,16 @@ let questionIndex = 0
 let score = 0
 let timeLeft = 60
 //I want to create an onclick function eventually 
-let timeInterval
+var timeInterval = function () {
+    document.querySelector(".time").innerText = "Time:" + timeLeft
+    timeLeft--
+}
 
-// created a timer that attached to the html element "time"
-
+    // created a timer that attached to the html element "time"
+   
 
 var onStartQuiz = function () {
-    timeInterval = setInterval(function () {
-        document.querySelector(".time").innerText = "Time:" + timeLeft
-        timeLeft--
-    }, 1000);
+     setInterval(timeInterval, 1000);
 
     //when the quiz starts it grabs the first object in the array
     var currentQuestion = questions[questionIndex];
@@ -163,7 +163,7 @@ var verifyAnswer = function (currentQuestion, btnId) {
 }
 var input = document.createElement("input");
 var showScore = function () {
-    clearInterval(timeInterval);
+
     questionDivEl.innerText = "Your score is " + score + "/" + questions.length
     //I put savescore here but it really should be attached to something i feel
 

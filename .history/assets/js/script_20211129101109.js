@@ -11,11 +11,11 @@ let timeLeft = 60
 //I want to create an onclick function eventually 
 let timeInterval
 
-// created a timer that attached to the html element "time"
-
+    // created a timer that attached to the html element "time"
+   
 
 var onStartQuiz = function () {
-    timeInterval = setInterval(function () {
+    var timeInterval = setInterval(function () {
         document.querySelector(".time").innerText = "Time:" + timeLeft
         timeLeft--
     }, 1000);
