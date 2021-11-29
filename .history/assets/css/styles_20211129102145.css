@@ -8,14 +8,13 @@ header {
     text-decoration-color: black;
     background-color: pink;
     
-    
 
 }
 .high-scores{
-    float: left;
+    text-align: left;
 }
 .time{
-    float: right;
+    text-align: right;
 }
 h1{
     height: 100px;
@@ -27,8 +26,8 @@ h1{
     text-align: center;
 }
 .question{
-    display: block;
-    width: 100%;
+    align-content: center;
+    justify-items: center;
     text-align: center;
     margin: auto;
 
@@ -36,11 +35,10 @@ h1{
 button{
     display: flex;
     flex-wrap: wrap;
-
+    position: relative;
     margin: 10px 0 5px 0;
     justify-content: center;
-    padding: 16px;
-    
+    padding: 16px 24px;
    
 }
 .btn{

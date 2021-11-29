@@ -18,7 +18,7 @@ var onStartQuiz = function () {
     timeInterval = setInterval(function () {
         document.querySelector(".time").innerText = "Time:" + timeLeft
         timeLeft--
-        if (timeLeft <= 0){
+        if (timeLeft === 0){
             showScore()
         }
     }, 1000);
@@ -167,16 +167,6 @@ var verifyAnswer = function (currentQuestion, btnId) {
 var input = document.createElement("input");
 var showScore = function () {
     clearInterval(timeInterval);
-    // argh the reason I never get full credit is because I wasn't checking the final question. I copy pasted
-    var btnList = document.querySelectorAll(".btn");
-    let checkIt = ""
-    for (let i = 0; i < btnList.length; i++) {
-        if (btnList[i].style.backgroundColor === "blue") {
-            checkIt = btnList[i].id
-        }
-    }
-    verifyAnswer(questions[questionIndex], checkIt)
-    
     questionDivEl.innerText = "Your score is " + score + "/" + questions.length
     //I put savescore here but it really should be attached to something i feel
 
