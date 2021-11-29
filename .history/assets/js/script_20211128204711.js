@@ -183,22 +183,17 @@ var showScore = function () {
             initials:initials, score:score
             
         }
-        highScores.push(object)
-        localStorage.setItem("highScores", JSON.stringify(highScores))
+        localStorage.setItem("highScores", JSON.stringify(object))
     });
 
     
     questionDivEl.appendChild(btn);
 
-//new javascript attached to html, within that javascript first create a variable and set equal to localstorage,
-//like line 200 but key word var infront of line 200
+
 }
 var highScores = []
-//getting items from local storage to put in array
 if(localStorage.getItem("highScores")){
-    //changing them from string to object
-    highScores = JSON.parse(localStorage.getItem("highScores"))
-
+    highScores = JSON.parse(localStorage.getItem(highScores))
 
 }
 

@@ -190,8 +190,7 @@ var showScore = function () {
     
     questionDivEl.appendChild(btn);
 
-//new javascript attached to html, within that javascript first create a variable and set equal to localstorage,
-//like line 200 but key word var infront of line 200
+
 }
 var highScores = []
 //getting items from local storage to put in array

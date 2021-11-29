@@ -178,29 +178,13 @@ var showScore = function () {
     btn.addEventListener("click", function(){
         var initials = input.value
         console.log(initials)
-        var object = {
-            //key value pair, key being the name of the property within the object, the value being the actual data or content
-            initials:initials, score:score
-            
-        }
-        highScores.push(object)
-        localStorage.setItem("highScores", JSON.stringify(highScores))
     });
-
     
     questionDivEl.appendChild(btn);
 
-//new javascript attached to html, within that javascript first create a variable and set equal to localstorage,
-//like line 200 but key word var infront of line 200
-}
-var highScores = []
-//getting items from local storage to put in array
-if(localStorage.getItem("highScores")){
-    //changing them from string to object
-    highScores = JSON.parse(localStorage.getItem("highScores"))
-
 
 }
+
 
 
 //making an array of questions

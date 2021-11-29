@@ -157,50 +157,18 @@ var verifyAnswer = function (currentQuestion, btnId) {
     }
 
 }
-var input = document.createElement("input");
 var showScore = function () {
-
+   
     questionDivEl.innerText = "Your score is " + score + "/" + questions.length
     //I put savescore here but it really should be attached to something i feel
 
-    //thank
-    
-    input.type = "text";
-    input.className = "save-initials"; // set the CSS class
-    questionDivEl.appendChild(input); // put it into the DOM
-    //add a button to submit scores
+//thank
+        var input = document.createElement("input");
+        input.type = "text";
+        input.className = "save-initials"; // set the CSS class
+        questionDivEl.appendChild(input); // put it into the DOM
+    }
 
-    var btn = document.createElement("button");
-    btn.innerHTML = "Write your initials to save"
-    btn.id = "btn-save";
-    btn.type = "button";
-    btn.className = "btn"
-    btn.addEventListener("click", function(){
-        var initials = input.value
-        console.log(initials)
-        var object = {
-            //key value pair, key being the name of the property within the object, the value being the actual data or content
-            initials:initials, score:score
-            
-        }
-        highScores.push(object)
-        localStorage.setItem("highScores", JSON.stringify(highScores))
-    });
-
-    
-    questionDivEl.appendChild(btn);
-
-//new javascript attached to html, within that javascript first create a variable and set equal to localstorage,
-//like line 200 but key word var infront of line 200
-}
-var highScores = []
-//getting items from local storage to put in array
-if(localStorage.getItem("highScores")){
-    //changing them from string to object
-    highScores = JSON.parse(localStorage.getItem("highScores"))
-
-
-}
 
 
 //making an array of questions

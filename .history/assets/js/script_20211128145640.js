@@ -1,48 +1,33 @@
 //first I am grabbing my variables from the html so that I can later use them inside functions
+var formEl = document.querySelector("#questions-form");
 var questionDivEl = document.querySelector(".question");
-
 //the thing I want to do with this local storage is be able to 
 //store the answers and scores of the quiz
 //localStorage.setItem("questionIndex", "0")
 let questionIndex = 0
-//we want to change it so its a let
-let score = 0
-let timeLeft = 60
+console.log(questionDivEl)
 //I want to create an onclick function eventually 
-function countdown() {
-
-    // created a timer that attached to the html element "time"
-    var timeInterval = setInterval(function () {
-        document.querySelector(".time").innerText = "Time:" + timeLeft
-        timeLeft--
-    }, 1000);
-}
+//so I'm creating my function 
 var onStartQuiz = function () {
-    countdown();
     //when the quiz starts it grabs the first object in the array
     var currentQuestion = questions[questionIndex];
 
     //its going into the html and taking the div clas question and setting the value equal to the current question
     questionDivEl.innerText = currentQuestion.question
-    //I had to pass in currentQuestions because it wasn't defined inside this function
-    createButtons(currentQuestion)
-
-}
-
-//same shit, I had to pass in currentQuestion
-var createButtons = function (currentQuestion) {
 
     //I created buttons with create element
     //and then I added stuff to the button from the array using btn.innerHtml.
     //and then I had document.questionDivEl to get the variable but that didn't work
     //so finally I deleted the "document" and it worked but I'm not exactly sure why because I just checked the taskinator to see
-    var btn = document.createElement("button");
+    var btn = document.createElement("BUTTON");
     btn.innerHTML = currentQuestion.a
     btn.id = "btn-a";
     btn.type = "button";
     btn.className = "btn"
     btn.addEventListener("click", turnBlue);
     questionDivEl.appendChild(btn);
+  
+
 
     var btn = document.createElement("button");
     btn.innerHTML = currentQuestion.b
@@ -51,7 +36,7 @@ var createButtons = function (currentQuestion) {
     btn.className = "btn"
     btn.addEventListener("click", turnBlue);
     questionDivEl.appendChild(btn);
-
+ 
 
     var btn = document.createElement("button");
     btn.innerHTML = currentQuestion.c
@@ -60,7 +45,7 @@ var createButtons = function (currentQuestion) {
     btn.className = "btn"
     btn.addEventListener("click", turnBlue);
     questionDivEl.appendChild(btn);
-
+   
 
     var btn = document.createElement("button");
     btn.innerHTML = currentQuestion.d
@@ -74,21 +59,18 @@ var createButtons = function (currentQuestion) {
     var btn = document.createElement("button");
     //i need a btn to go to the next question but its not working
     btn.innerHTML = "Next Question"
-    // buttons
+    //fuck you buttons
     btn.id = "next-question";
     btn.type = "button";
     btn.addEventListener("click", nextQuestion);
     questionDivEl.appendChild(btn);
 
-    //if the questions we've gone through equals the questions that are in the array then we show score
-    if (questionIndex == questions.length - 1) {
-        btn.innerHTML = "Finish Quiz"
-        btn.removeEventListener("click", nextQuestion);
-        btn.addEventListener("click", showScore)
 
-    }
+    //create a separate onclick that changes the current question to something else
+    //create a next question button that will go on to the next question and save your answer
+    console.log("hello")
 }
-var nextQuestion = function () {
+var nextQuestion = function() {
 
     //need to save the blue answer if background color is blue whe get the id of the btn
     //and compare it to the answer
@@ -96,20 +78,18 @@ var nextQuestion = function () {
     var btnList = document.querySelectorAll(".btn");
     //I originally put var here but it can't be a variable because I need to reset it to something else inside the for loop
     let checkIt = ""
-    for (let i = 0; i < btnList.length; i++) {
+    for(let i = 0; i < btnList.length; i++){
         //if the background color is blue then I am setting the variable checkit to the btn id
         //this will hopefully save the btn id
-        if (btnList[i].style.backgroundColor === "blue") {
+        if (btnList[i].style.backgroundColor === "blue"){
             checkIt = btnList[i].id
         }
-        //it needs the currentQuestion in the createbuttons 
-    }
-
+        }
 
     //the first paramenter of verifyAnswer is the current question
     verifyAnswer(questions[questionIndex], checkIt)
-
-
+    
+    
     //questionIndex++=questionIndex plus 1, which would change our index to the next question in our list
     questionIndex++
     console.log(questionIndex)
@@ -117,92 +97,38 @@ var nextQuestion = function () {
     var currentQuestion = questions[questionIndex];
     questionDivEl.innerText = currentQuestion.question
     //update answer options 
+    
 
-    createButtons(questions[questionIndex])
-    //if the questions we've gone through equals the questions that are in the array then we show score
-    // if (questionIndex == questions.length - 1) {
-
-    // }
 
 }
-var turnBlue = function (event) {
+var turnBlue = function(event){
+    console.log(event)
     //when btn onclick, turn btn blue
     //so I made a variable to select all the buttons to change color when they are clicked
     //because I want them to turn blue when clicked but I also don't want them to all turn blue
     //I want whichever is the most recent clicked button to turn blue
     //I didn't know how to do this so w3schools https://www.w3schools.com/js/js_htmldom_nodelist.asp
     //was very helpful
-    var btnList = document.querySelectorAll(".btn")
-    for (let i = 0; i < btnList.length; i++) {
-        btnList[i].style.backgroundColor = "white"
-    }
+     var btnList = document.querySelectorAll(".btn")
+    for(let i = 0; i < btnList.length; i++){
+        btnList[i].style.backgroundColor = "white"}
     event.target.style.backgroundColor = "blue";
-
+    
 }
 //whenever we call verifyAnswer, we are feeding it the current question
-var verifyAnswer = function (currentQuestion, btnId) {
+var verifyAnswer =function(currentQuestion, btnId){
     //btn- is an empty string and we are replaing it as an empty string so the remaining part of the string a, b, c, or d is left as the received answer
-    //woah so cool, replacing parts of strings
-    //check recieved answer against the current question answer
-    var receivedAnswer = btnId.replace("btn-", "")
+    //fuck replacing parts of strings
+    var receivedAnswer = btnId.replace("btn-","")
+    console.log(btnId, receivedAnswer)
+    
+
+    //check recieved answer against the current question aswer
     //if answer is correct, update overallScore
-    if (receivedAnswer === currentQuestion.answer) {
-        //I feel like I might need some math here
-        score++
-    }
     //if answer is incorrect, update overallScore and steal time
-    if (receivedAnswer !== currentQuestion.answer) {
-        timeLeft = timeLeft - 5
-
-    }
+    //
 
 }
-var input = document.createElement("input");
-var showScore = function () {
-
-    questionDivEl.innerText = "Your score is " + score + "/" + questions.length
-    //I put savescore here but it really should be attached to something i feel
-
-    //thank
-    
-    input.type = "text";
-    input.className = "save-initials"; // set the CSS class
-    questionDivEl.appendChild(input); // put it into the DOM
-    //add a button to submit scores
-
-    var btn = document.createElement("button");
-    btn.innerHTML = "Write your initials to save"
-    btn.id = "btn-save";
-    btn.type = "button";
-    btn.className = "btn"
-    btn.addEventListener("click", function(){
-        var initials = input.value
-        console.log(initials)
-        var object = {
-            //key value pair, key being the name of the property within the object, the value being the actual data or content
-            initials:initials, score:score
-            
-        }
-        highScores.push(object)
-        localStorage.setItem("highScores", JSON.stringify(highScores))
-    });
-
-    
-    questionDivEl.appendChild(btn);
-
-//new javascript attached to html, within that javascript first create a variable and set equal to localstorage,
-//like line 200 but key word var infront of line 200
-}
-var highScores = []
-//getting items from local storage to put in array
-if(localStorage.getItem("highScores")){
-    //changing them from string to object
-    highScores = JSON.parse(localStorage.getItem("highScores"))
-
-
-}
-
-
 //making an array of questions
 var questions = [
     {
@@ -252,9 +178,3 @@ var questions = [
     }
 
 ]
-//styles
-//timer needs to stop on finish quiz (clearInterval needs to have the name of the function it was given, its a callback)
-//make an input element for the initials
-//save the score in local storage 
-//how do i freakin make that stupid start button disappear, I didn't like it at all.
-
