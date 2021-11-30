@@ -275,5 +275,9 @@ var questions = [
     }
 
 ]
-
+//styles
+//timer needs to stop on finish quiz (clearInterval needs to have the name of the function it was given, its a callback)
+//make an input element for the initials
+//save the score in local storage 
+//how do i freakin make that stupid start button disappear, I didn't like it at all.
 
